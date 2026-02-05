@@ -1,6 +1,8 @@
 const express = require('express')
 const router = express.Router()
 const controller = require('../controllers/tasks.controller')
+const validateTask = require('../middlewares/validateTasks')
+const paginate = require('../middlewares/paginate')
 
 router.get('/', controller.getAllTasks)
 router.get('/:id', controller.getTaskById)

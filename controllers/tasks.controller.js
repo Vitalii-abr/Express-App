@@ -2,7 +2,10 @@ const { v4: uuidv4 } = require('uuid')
 const tasks = require('../data/tasks')
 
 exports.getAllTasks = (req, res) => {
-  res.json(tasks)
+  const { start, end } = req.pagination || {}
+  const data = start !== undefined ? tasks.slice(start, end) : tasks
+
+  res.json(data)
 }
 
 exports.getTaskById = (req, res) => {
